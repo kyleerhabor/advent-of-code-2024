@@ -1,3 +1,3 @@
-import * as day1 from "./days/day1.js";
+import * as day from "./days/day3.js";
 
-day1.part2();
+day.part2();
