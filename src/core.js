@@ -1,5 +1,13 @@
 import * as fs from "node:fs/promises";
 
+export function increment(x) {
+  return x + 1;
+}
+
+export function decrement(x) {
+  return x - 1;
+}
+
 export function add(a, b) {
   return a + b;
 }
