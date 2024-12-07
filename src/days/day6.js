@@ -8,24 +8,6 @@ const DOWN = 2;
 const LEFT = 3;
 const DIRECTION_COUNT = 4;
 
-function advance(state, i, c) {
-  if (c === OBSTACLE) {
-    const next = increment(state.direction) % DIRECTION_COUNT;
-
-    return {
-      ...state,
-      direction: next
-      // This would be in case we wanted to solve part 2.
-      // turns: Object.assign({ [i]: next }, state.turns)
-    };
-  }
-
-  return {
-    ...state,
-    index: i
-  };
-}
-
 export async function part1() {
   const input = await readInput("inputs/day6.txt");
   const stridei = input.indexOf("\n");
