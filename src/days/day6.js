@@ -44,14 +44,15 @@ export async function part1() {
     // console.log(`At (${x}, ${y})`);
     used.add(state.index);
 
+    let i;
+
     switch (state.direction) {
       case LEFT:
         if (state.index % (stridei + 1) === 0) {
           break loop;
         }
 
-        const li = decrement(state.index);
-        state = advance(state, li, input[li]);
+        i = decrement(state.index);
 
         break;
       case RIGHT:
@@ -59,8 +60,7 @@ export async function part1() {
           break loop;
         }
 
-        const ri = increment(state.index);
-        state = advance(state, ri, input[ri]);
+        i = increment(state.index);
 
         break;
       case UP:
@@ -68,8 +68,7 @@ export async function part1() {
           break loop;
         }
 
-        const ui = state.index - stridei - 1;
-        state = advance(state, ui, input[ui]);
+        i = state.index - stridei - 1;
 
         break;
       case DOWN:
@@ -77,11 +76,19 @@ export async function part1() {
           break loop;
         }
 
-        const di = state.index + stridei + 1;
-        state = advance(state, di, input[di]);
+        i = state.index + stridei + 1;
 
         break;
     }
+
+    if (input[i] !== OBSTACLE) {
+      state.index = i;
+
+      continue;
+    }
+
+    const next = increment(state.direction) % DIRECTION_COUNT;
+    state.direction = next
   }
 
   console.log(used.size);
